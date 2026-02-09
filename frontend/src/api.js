@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://192.168.1.118:5000/api'
+    // Buraya kendi VPS IP adresini yazıyorsun
+    baseURL: 'http://89.252.153.99:5000/api' 
 });
 
-// Interceptor'ı standart Bearer formatına çekiyoruz
+// Interceptor aynı kalsın...
 API.interceptors.request.use((req) => {
     const token = localStorage.getItem('token');
     if (token) {
-        // Backend'deki protect middleware'i büyük ihtimalle burayı okuyor
         req.headers.Authorization = `Bearer ${token}`;
     }
     return req;
